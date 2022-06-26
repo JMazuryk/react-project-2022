@@ -1,11 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import Posts from "./components/posts/Posts";
+// з jsonplaceholder отримати всіх юзерів в компоненту Users.js
+// відобразити кожного інформацію (id,name) з кожного юзера (компонента User)
+// Зробити кнопку вибора юзера, при натисканні на яку в Users.js ви покажете детальну інфомацію про користувача(довільно обрану інформацію)
+
+
+import {Users} from "./components";
 
 function App() {
   return (
     <div>
-<Posts/>
+<Users/>
     </div>
   );
 }

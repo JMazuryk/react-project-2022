@@ -1,6 +1,3 @@
-import Posts from "./posts/Posts";
-import Post from "./post/Post";
-
-export {
-    Post,Posts
-}
+export * from './user/User';
+export * from './users/Users';
+export * from './userDetails/UserDetails';
