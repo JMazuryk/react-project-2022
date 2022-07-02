@@ -1,0 +1,24 @@
+import {useEffect, useState} from "react";
+import User from "../user/User";
+import {getUsers} from "../../services";
+
+export default function Users() {
+    let [users, setUsers] = useState([]);
+    useEffect(() => {
+        getUsers().then(value => setUsers([...value]));
+
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(value => value.json())
+        //     .then(value => {
+        //         setUsers([...value]);
+        //     })
+    }, [])
+
+    return (
+        <div>
+            {
+                users.map(value => <User key={value.id} item={value}/>)
+            }
+        </div>
+    );
+}

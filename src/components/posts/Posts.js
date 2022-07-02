@@ -1,39 +1,27 @@
 import {useEffect, useState} from "react";
+import {getPosts} from "../../services";
 import Post from "../post/Post";
 
-export default function Posts() {
+export default function Posts(getPostId) {
 
     let [posts, setPosts] = useState([]);
-    let [post, setPost] = useState({});
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/posts")
-            .then(value => value.json())
-            .then(value => {
-                setPosts(value);
-            });
+
+        getPosts().then(({data}) => setPosts([...data]));
+        // fetch('https://jsonplaceholder.typicode.com/posts')
+        //     .then(value => value.json())
+        //     .then(value => {
+        //         console.log(value);
+        //     })
 
     }, []);
-
-    const Chosen = (item) => {
-        console.log('safsaf')
-        setPost(item)
-    }
-
     return (
         <div>
             {
-                post.id && <div>{post.userId}{post.body}</div>
+                posts.map(value => <Post item={value} key={value.id} getPostId={getPostId}/>)
+
             }
-            <h2>posts</h2>
-            {posts.map((post, index) =>
-                <Post key={index}
-                      item={post}
-                      color={'green'}
-                      Chosen={Chosen}
-                />)}
-
-
-        </div>);
-
+        </div>
+    );
 }

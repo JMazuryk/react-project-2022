@@ -1,11 +1,10 @@
-export default function Post(props) {
-    let {item,color,Chosen} = props;
+export default function Post({item,getPostId}) {
     return (
-        <div style={{color: color, background:'silver',marginBottom:'3px'}}>{item.id} {item.title}
+        <div>
+            <h3 onClick={()=>{
+                getPostId(item.id);
 
-        <button onClick={()=>{
-            Chosen(item);
-        } }>details</button>
+            }}>{item.title}</h3>
         </div>
     );
 }

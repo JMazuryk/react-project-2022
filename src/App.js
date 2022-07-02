@@ -1,13 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Users from "./components/users/Users";
 import Posts from "./components/posts/Posts";
+import {useState} from "react";
+import {getPostComments} from "./services";
 
-function App() {
-  return (
-    <div>
-<Posts/>
-    </div>
-  );
+export default function App() {
+
+    let [comments, setComments] = useState([]);
+    const getPostId = (id) => {
+     getPostComments(id).then(({data}) => setComments([...data]));
+    }
+
+    return (
+        <div>
+            <h1>Comments chosen Post</h1>
+            {
+                comments.map(value => <div>{value.body}</div>)
+            }
+            <hr/>
+            <br/>
+            <hr/>
+            {/*<Users/>*/}
+            <Posts getPostId={getPostId}/>
+
+
+        </div>
+    );
 }
-
-export default App;
