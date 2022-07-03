@@ -1,9 +1,12 @@
-// Отримати всіх користувачів з jsonplaceholder, вивести їх.
-//     Біля кожного користувача зробити кнопку, при натисканні на яку в Апп компоненті з'являються всі пости поточного користувача
-// Запити робити через axios, організація коду через сервіси
+import axios from "axios";
 
-let baseUrl = 'https://jsonplaceholder.typicode.com/users'
+let axiosInstance = axios.create({
+    baseUrl: 'https://jsonplaceholder.typicode.com/users'
+})
 
-const getUsers = () => fetch(baseUrl).then(value => value);
+const getUsers = () => axiosInstance.get('');
 
-export {getUsers};
+const getUserPosts = (id) => axiosInstance.get (`/${id}/posts`)
+
+export {getUsers,getUserPosts};
+
