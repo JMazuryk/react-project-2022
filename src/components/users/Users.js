@@ -3,22 +3,21 @@ import {getUsers} from "../../services";
 import User from "../user/User";
 
 
-export default function Users({clickPosts}) {
-    let [users,setUsers] = useState([]);
+export default function Users({elevate}) {
+    let [users, setUsers] = useState([]);
+    useEffect(() => {
+        getUsers()
+            .then(({data}) => setUsers([...data]));
+    }, []);
 
-    useEffect(()=>{
-        getUsers().then(({data}) => setUsers([...data]));
+    return (<div>
+        {
+            users.map(user => <User
+                user={user}
+                key={user.id}
+                elevate={elevate}
+            />)
+        }
 
-    },[]);
-    return (
-
-        <div>
-            {
-                users.map(value => <User key={value.id}
-                                         item={value}
-                                         clickPosts={clickPosts}
-                />)
-            }
-        </div>
-    );
+    </div>);
 }

@@ -1,11 +1,11 @@
-export default function User({item,clickPosts}) {
+export default function User({user,elevate}) {
     const onclick = () => {
-        clickPosts (item.id);
+        elevate(user.id);
+
     }
-    return (
-        <div>
-            {item.name}
-            <button onClick={onclick}>show posts</button>
-        </div>
-    );
+    return (<div>
+        {user.name}
+        <button onClick={onclick}> show posts</button>
+
+    </div>);
 }

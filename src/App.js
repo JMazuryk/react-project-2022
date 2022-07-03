@@ -11,20 +11,24 @@ import './App.css';
 import Posts from "./components/posts/Posts";
 
 
+
 export default function App() {
+
     let [posts, setPosts] = useState([]);
-    const clickPosts = (id) => {
+    const elevate = (id) => {
         getUserPosts(id).then(({data}) => {
             setPosts([...data]);
         })
+
     }
-    return (<div className={'main'}>
-            <div className={'left'}><Users clickPosts={clickPosts}/></div>
-            <div className={'right'}>
 
-                <Posts posts={posts}/>
-            </div>
+    return (<div className={'df'}>
+
+        <div className={'left'}><Users elevate={elevate}/></div>
+        <div className={'right'}>
+            <Posts posts={posts}/>
+
         </div>
-    );
-}
 
+    </div>);
+}
