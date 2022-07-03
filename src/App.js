@@ -7,8 +7,8 @@ export default function App() {
 
     let [comments, setComments] = useState([]);
     const getPostId = (id) => {
-     // getPostComments(id).then(({data}) => setComments([...data]));
-        console.log(id);
+     getPostComments(id).then(({data}) => setComments([...data]));
+
     }
 
     return (

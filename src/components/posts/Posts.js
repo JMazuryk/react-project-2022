@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {getPosts} from "../../services";
 import Post from "../post/Post";
 
-export default function Posts(getPostId) {
+export default function Posts({getPostId}) {
 
     let [posts, setPosts] = useState([]);
 
