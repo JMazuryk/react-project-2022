@@ -1,43 +1,34 @@
-import {Link, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
-import LayoutPage from "./pages/LayoutPage";
-import AboutPage from "./pages/AboutPage";
-import PostsPage from "./pages/PostsPage";
-import UsersPage from "./pages/UsersPage";
-import PostDetailsPage from "./pages/PostDetailsPage";
+import MainLayouts from "./layouts/MainLayouts";
+import TodosPage from "./pages/TodosPage";
+import AlbumsPage from "./pages/AlbumsPage";
+import CommentsPage from "./pages/CommentsPage";
+import PostsCurrentComments from "./components/posts/PostsCurrentComments";
+
+// реалізувати 3 маршрути
+// todos - при переході на який тягнуться всі todo з https://jsonplaceholder.typicode.com/todos
+//
+//     albums - при переході на який тягнуться всі альбоми з https://jsonplaceholder.typicode.com/albums
+//
+//     comments - при переході на який тягнуться всі комментарі https://jsonplaceholder.typicode.com/comments
+//     при натисканні на комментар тягнеться пост, до якого належіить цей коментар всі його пости. приклад запиту https://jsonplaceholder.typicode.com/posts/ID
+//     id поста взяти з коментаря (postId)
+//
+// відображати ті чи інші маршрути можна на будь-якому рівні на ваш вибір.
 
 export default function App() {
     return (
         <div>
-            <div>
-                <h2>menu</h2>
-                <ul>
-                    <li><Link to={'/'}>home</Link></li>
-                    <li><Link to={'/layout'}>layout</Link></li>
-                    <li><Link to={'/about'}>about</Link></li>
-                </ul>
-            </div>
-
-            <div>
-                <h2>content</h2>.
-
-                <Routes>
-                    <Route path={'/'} element={<HomePage/>}/>
-                    <Route path={'/layout'} element={<LayoutPage/>}>
-                        <Route path={'posts'} element={<PostsPage/>}>
-                            <Route path={':postid'} element={<PostDetailsPage/>}/>
-                        </Route>
-                        <Route path={'users'} element={<UsersPage/>}>
-                            <Route path={':id'} element={<PostsPage/>}/>
-                        </Route>
+            <Routes>
+                <Route path={'/'} element={<MainLayouts/>}>
+                    <Route path={'todos'} element={<TodosPage/>}/>
+                    <Route path={'albums'} element={<AlbumsPage/>}/>
+                    <Route path={'comments'} element={<CommentsPage/>}>
+                        <Route path={':postId'} element={<PostsCurrentComments/>}/>
                     </Route>
-                    <Route path={'/about'} element={<AboutPage/>}/>
-                </Routes>
-
-            </div>
-
-
+                </Route>
+            </Routes>
         </div>
     );
 }
