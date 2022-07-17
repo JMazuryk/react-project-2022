@@ -1,17 +1,26 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 
+let defaultValue = {
+    prop1: "value1", foo: function () {
+        console.log("bar");
+    }
+};
+
+export let MyContext = createContext(defaultValue);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
-      <BrowserRouter>
-          <App />
-      </BrowserRouter>
+<MyContext.Provider  value={defaultValue}>
+    <App />
+</MyContext.Provider>
+
 
   </React.StrictMode>
 );

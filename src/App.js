@@ -1,43 +1,24 @@
-import {Link, Route, Routes} from "react-router-dom";
-
-import HomePage from "./pages/HomePage";
-import LayoutPage from "./pages/LayoutPage";
-import AboutPage from "./pages/AboutPage";
-import PostsPage from "./pages/PostsPage";
-import UsersPage from "./pages/UsersPage";
-import PostDetailsPage from "./pages/PostDetailsPage";
+import A from "./components/A";
 
 export default function App() {
+let users = [
+    {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },
+    {
+        "userId": 1,
+        "id": 2,
+        "title": "qui est esse",
+        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+    }
+    ]
+
     return (
         <div>
-            <div>
-                <h2>menu</h2>
-                <ul>
-                    <li><Link to={'/'}>home</Link></li>
-                    <li><Link to={'/layout'}>layout</Link></li>
-                    <li><Link to={'/about'}>about</Link></li>
-                </ul>
-            </div>
-
-            <div>
-                <h2>content</h2>.
-
-                <Routes>
-                    <Route path={'/'} element={<HomePage/>}/>
-                    <Route path={'/layout'} element={<LayoutPage/>}>
-                        <Route path={'posts'} element={<PostsPage/>}>
-                            <Route path={':postid'} element={<PostDetailsPage/>}/>
-                        </Route>
-                        <Route path={'users'} element={<UsersPage/>}>
-                            <Route path={':id'} element={<PostsPage/>}/>
-                        </Route>
-                    </Route>
-                    <Route path={'/about'} element={<AboutPage/>}/>
-                </Routes>
-
-            </div>
-
-
+<A users={users}/>
         </div>
     );
 }
