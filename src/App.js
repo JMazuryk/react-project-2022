@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
-import Users from "./components/Users";
+import {useDispatch, useSelector} from "react-redux";
 
-class App extends Component {
-    render() {
-        return (
-            <div>
-                <Users/>
-            </div>
-        );
-    }
+export default function App() {
+    let state = useSelector(state=>state);
+    let dispatch = useDispatch();
+    console.log(state);
+    return (
+        <div>
+            {state}
+            <button onClick={()=>{
+                dispatch ({type:"INC",payload:1});
+            }}></button>
+        </div>
+    );
 }
-
-export default App;
