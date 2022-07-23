@@ -23,6 +23,12 @@ componentDidMount() {
         return (
             <div>
                 {this.state.users.map(value => <User key={value.id} item={value}></User>)}
+
+                <button onClick={()=>{
+                    this.state.users.pop();
+                    this.setState({users:this.state.users});
+                }}>delete last user</button>
+
             </div>);
     }
 }
