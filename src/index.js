@@ -13,6 +13,10 @@ let store = createStore((state = 0, action)=>{
         case "INC":
             let newStateValue = state+action.payload;
             return newStateValue;
+        case "DEC":
+            return state-action.payload;
+        case "RES":
+            return 0;
         default:
             return state
     }

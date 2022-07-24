@@ -9,7 +9,17 @@ export default function App() {
             {state}
             <button onClick={()=>{
                 dispatch ({type:"INC",payload:1});
-            }}></button>
+            }}>INCrement</button>
+
+            <button onClick={()=>{
+                dispatch ({type:"DEC",payload:1});
+            }}>DECrement</button>
+
+            <button onClick={()=>{
+                dispatch ({type:"RES"});
+            }}>RESet</button>
+
+
         </div>
     );
 }
